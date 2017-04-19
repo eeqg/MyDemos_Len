@@ -112,7 +112,7 @@ public class BbFragment extends Fragment implements View.OnClickListener{
 		originData.add(new TestBean("TabHost","TabLayout + ViewPager + Fragment"));
 		originData.add(new TestBean("SearchView","aaa"));
 		originData.add(new TestBean("DrawerLayout","侧滑菜单, 下拉刷新, 上拉加载..."));
-		originData.add(new TestBean("DDD","ddd"));
+		originData.add(new TestBean("PictruePicker","图片选择"));
 		originData.add(new TestBean("EEE","eee"));
 		originData.add(new TestBean("FFF","fff"));
 		originData.add(new TestBean("ASDFG","fff"));
