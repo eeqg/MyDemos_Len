@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimaryDark">#263238</color>
+    <drawable name="bg_actionbar">#63B8FF</drawable>
+    <color name="colorPrimaryDarkTest">#ff3238</color>
+    <color name="colorSwipeRefreshProgressInner1">#ff3238</color>
+    <color name="colorSwipeRefreshProgressInner2">#32ff38</color>
+    <color name="colorSwipeRefreshProgressInner3">#3238ff</color>
+    <color name="colorSwipeRefreshProgressOuter">#1032aa38</color>
+</resources>

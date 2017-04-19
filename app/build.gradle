@@ -1,0 +1,42 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+
+    defaultConfig {
+        applicationId "com.example.mydemos_len"
+        minSdkVersion 21
+        targetSdkVersion 21
+    }
+
+    /**
+     * 签名设置
+     */
+    signingConfigs {}
+
+    /**
+     * 混淆设置
+     */
+    buildTypes {
+        release {
+            minifyEnabled false // 是否进行混淆
+            // 混淆文件的位置
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+
+//依赖库
+dependencies {
+    compile 'com.android.support:support-v4:20.0.0'
+    compile 'com.android.support:recyclerview-v7:21.0.3'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:appcompat-v7:25.3.0'
+    compile 'com.android.support:design:25.3.0'
+    compile 'com.google.code.gson:gson:2.8.0'
+    compile 'io.reactivex:rxjava:1.2.7'
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'com.trello:rxlifecycle:0.3.0'
+    compile 'com.trello:rxlifecycle-components:0.3.0'
+}

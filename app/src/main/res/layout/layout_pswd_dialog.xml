@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:layout_gravity="center_horizontal"
+        android:textSize="14sp"
+        android:textColor="#535353"
+        android:text="验证码正确，已临时解除锁屏，请立即设置新密码" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:textSize="16sp"
+        android:textColor="#009890"
+        android:text="确定" />
+
+</LinearLayout>
