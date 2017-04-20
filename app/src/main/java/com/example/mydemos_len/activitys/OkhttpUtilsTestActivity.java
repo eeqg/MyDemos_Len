@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mydemos_len.R;
+import com.example.mydemos_len.bean.TestBean1;
 import com.example.mydemos_len.bean.User;
 import com.example.mydemos_len.utils.JsonGenericsSerializator;
 import com.example.mydemos_len.utils.ListUserCallback;
@@ -76,6 +77,7 @@ public class OkhttpUtilsTestActivity extends AppCompatActivity
             {
                 case 100:
                     Toast.makeText(OkhttpUtilsTestActivity.this, "http", Toast.LENGTH_SHORT).show();
+                    parseJson(response);
                     break;
                 case 101:
                     Toast.makeText(OkhttpUtilsTestActivity.this, "https", Toast.LENGTH_SHORT).show();
@@ -91,6 +93,21 @@ public class OkhttpUtilsTestActivity extends AppCompatActivity
         }
     }
 
+    private void parseJson(String jsonStr){
+        Gson gson = new Gson();
+        TestBean1 testBean1 = gson.fromJson(jsonStr, TestBean1.class);
+        
+        //test
+        if (testBean1 == null) {
+            return;
+        }
+        Log.d("test_wp",String.format("parseJson: dataInfo = %s \n total = %s",
+                testBean1.dataInfo.toString(), testBean1.totalRecord));
+        if(testBean1.list == null){
+            return;
+        }
+        Log.d("test_wp",String.format("parseJson: listItemInfo = %s",testBean1.list.get(0)));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -110,7 +127,7 @@ public class OkhttpUtilsTestActivity extends AppCompatActivity
     public void getHtml(View view)
     {
         String url = "http://www.zhiyun-tech.com/App/Rider-M/changelog-zh.txt";
-        //url="http://www.391k.com/api/xapi.ashx/info.json?key=bd_hyrzjjfb4modhj&size=10&page=1";
+        url="http://www.391k.com/api/xapi.ashx/info.json?key=bd_hyrzjjfb4modhj&size=10&page=1";
         OkHttpUtils
                 .get()
                 .url(url)
@@ -237,6 +254,7 @@ public class OkhttpUtilsTestActivity extends AppCompatActivity
                     @Override
                     public void onError(Call call, Exception e, int id)
                     {
+                        Log.e("TAG","onError:" + e.getMessage());
                         mTv.setText("onError:" + e.getMessage());
                     }
 

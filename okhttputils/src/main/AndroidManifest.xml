@@ -1,3 +1,5 @@
-<manifest package="kdt.okhttputils">
-
+<manifest package="kdt.okhttputils"
+          xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 访问网络 -->
+    <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>
