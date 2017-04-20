@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.mydemos_len"
-          android:versionCode="1"
-          android:versionName="1.0">
-
-    <uses-sdk
-        android:minSdkVersion="21"
-        android:targetSdkVersion="21"/>
+          package="com.example.mydemos_len">
 
     <uses-permission android:name="android.permission.SEND_SMS"/>
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
@@ -77,6 +71,10 @@
             android:name=".activitys.DrawerLayoutActivity"
             android:label="@string/title_activity_drawer_layout"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        <activity android:name=".activitys.OkhttpUtilsTestActivity"
+                  android:theme="@style/Theme.AppCompat.Light"
+                  >
         </activity>
     </application>
 
