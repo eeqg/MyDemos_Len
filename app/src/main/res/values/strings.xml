@@ -20,5 +20,6 @@
     <string name="title_activity_main2">Main2Activity</string>
     <string name="title_activity_search_view">SearchViewActivity</string>
     <string name="title_activity_drawer_layout">DrawerLayoutActivity</string>
+    <string name="title_activity_picture_pick">PicturePickActivity</string>
 
 </resources>

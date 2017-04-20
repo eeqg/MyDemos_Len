@@ -9,9 +9,9 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
 
     <application
@@ -76,9 +76,13 @@
             android:label="@string/title_activity_drawer_layout"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
-        <activity android:name=".activitys.OkhttpUtilsTestActivity"
-                  android:theme="@style/Theme.AppCompat.Light"
-                  >
+        <activity
+            android:name=".activitys.OkhttpUtilsTestActivity"
+            android:theme="@style/Theme.AppCompat.Light">
+        </activity>
+        <activity
+            android:name=".activitys.PicturePickActivity"
+            android:label="@string/title_activity_picture_pick">
         </activity>
     </application>
 

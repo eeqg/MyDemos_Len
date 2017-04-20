@@ -29,6 +29,7 @@ android {
 
 //依赖库
 dependencies {
+    compile project(':okhttputils')
     compile 'com.android.support:support-v4:20.0.0'
     compile 'com.android.support:recyclerview-v7:21.0.3'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
@@ -39,5 +40,4 @@ dependencies {
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'com.trello:rxlifecycle:0.3.0'
     compile 'com.trello:rxlifecycle-components:0.3.0'
-    compile project(':okhttputils')
 }

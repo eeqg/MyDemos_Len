@@ -5,6 +5,7 @@ import com.example.mydemos_len.R;
 import com.example.mydemos_len.R.layout;
 import com.example.mydemos_len.activitys.DrawerLayoutActivity;
 import com.example.mydemos_len.activitys.OkhttpUtilsTestActivity;
+import com.example.mydemos_len.activitys.PicturePickActivity;
 import com.example.mydemos_len.activitys.SearchViewActivity;
 import com.example.mydemos_len.activitys.TableHostActivity;
 import com.example.mydemos_len.utils.DividerItemDecoration;
@@ -90,8 +91,8 @@ public class BbFragment extends Fragment implements View.OnClickListener{
 					case "DrawerLayout":
 						startActivity(new Intent(BbFragment.this.getActivity(), DrawerLayoutActivity.class));
 						break;
-					case "PictruePicker":
-						//startActivity(new Intent(BbFragment.this.getActivity(), DrawerLayoutActivity.class));
+					case "PicturePicker":
+						startActivity(new Intent(BbFragment.this.getActivity(), PicturePickActivity.class));
 						break;
 					case "OkHttpUtils":
 						startActivity(new Intent(BbFragment.this.getActivity(), OkhttpUtilsTestActivity.class));
@@ -119,7 +120,7 @@ public class BbFragment extends Fragment implements View.OnClickListener{
 		originData.add(new TestBean("TabHost","TabLayout + ViewPager + Fragment"));
 		originData.add(new TestBean("SearchView","aaa"));
 		originData.add(new TestBean("DrawerLayout","侧滑菜单, 下拉刷新, 上拉加载..."));
-		originData.add(new TestBean("PictruePicker","图片选择"));
+		originData.add(new TestBean("PicturePicker","图片选择器"));
 		originData.add(new TestBean("OkHttpUtils","test the OkHttp"));
 		originData.add(new TestBean("FFF","fff"));
 		originData.add(new TestBean("ASDFG","fff"));
