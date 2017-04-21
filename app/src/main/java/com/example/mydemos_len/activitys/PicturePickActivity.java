@@ -62,16 +62,21 @@ public class PicturePickActivity extends Activity {
 	
 	public void fromCamera(View view) {
 		// 激活相机
-		Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-		// 判断存储卡是否可以用，可用进行存储
-		if (hasSdcard()) {
-			tempFile = new File(Environment.getExternalStorageDirectory(), PHOTO_FILE_NAME);
-			// 从文件中创建uri
-			Uri uri = Uri.fromFile(tempFile);
-			intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+		Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+		if(intent.resolveActivity(getPackageManager()) != null){
+			
+			// 判断存储卡是否可以用，可用进行存储
+			if (hasSdcard()) {
+				tempFile = new File(Environment.getExternalStorageDirectory(), PHOTO_FILE_NAME);
+				// 从文件中创建uri
+				Uri uri = Uri.fromFile(tempFile);
+				intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+			}
+			// 开启一个带有返回值的Activity，请求码为PHOTO_REQUEST_CAMERA
+			startActivityForResult(intent, REQUEST_CODE_CAMERA);
+		} else {
+			Toast.makeText(this, "No system camera found", Toast.LENGTH_SHORT).show();
 		}
-		// 开启一个带有返回值的Activity，请求码为PHOTO_REQUEST_CAMERA
-		startActivityForResult(intent, REQUEST_CODE_CAMERA);
 	}
 	
 	/**

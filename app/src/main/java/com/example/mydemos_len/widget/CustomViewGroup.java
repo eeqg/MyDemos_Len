@@ -2,6 +2,7 @@ package com.example.mydemos_len.widget;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
@@ -9,12 +10,13 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.Scroller;
 import android.widget.TextView;
 
 public class CustomViewGroup extends ViewGroup{
-	private final int WIDTH = 990;
-	private final int HEIGHT = 680;
+	//private final int WIDTH = 990;
+	//private final int HEIGHT = 680;
 	private final int SNAP_NEXT = 1;
 	private final int SNAP_PRE = 2;
 	private TextView view1;
@@ -28,6 +30,8 @@ public class CustomViewGroup extends ViewGroup{
 	private boolean bFlag;
 	private boolean mStartSwap;
 	private boolean isScrolling;
+	private int h = 900;
+	private int w = 990;
 	
 	private Handler mHandler = new Handler(){
 		@Override
@@ -55,6 +59,8 @@ public class CustomViewGroup extends ViewGroup{
 		
 		setBackgroundColor(Color.parseColor("#308f8080"));
 		
+		initViewSize();
+		
 		view1 = new TextView(context);
 		view1.setText("AAAaaa");
 		view1.setBackgroundColor(Color.parseColor("#80ff0000"));
@@ -68,7 +74,31 @@ public class CustomViewGroup extends ViewGroup{
 		addView(view1);
 		addView(view2);
 		addView(view3);
-		
+	}
+	
+	@Override
+	protected void onAttachedToWindow() {
+		super.onAttachedToWindow();
+		//initViewSize();
+	}
+	
+	private void initViewSize(){
+		//获取View宽高的方法
+		//OnGlobalLayoutListener 是ViewTreeObserver的内部类，当一个视图树的布局发生改变时，可以被ViewTreeObserver监听到.
+		this.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+			@Override
+			public void onGlobalLayout() {
+				w = CustomViewGroup.this.getWidth();
+				h = CustomViewGroup.this.getHeight();
+				Log.d("test_wp",String.format("--onGlobalLayout()--w = %s, h = %s", w, h));
+				
+				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+					CustomViewGroup.this.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+				} else {
+					CustomViewGroup.this.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+				}
+			}
+		});
 	}
 	
 	@Override
@@ -199,7 +229,7 @@ public class CustomViewGroup extends ViewGroup{
 		if(curScreen != screen){mStartSwap = true;}
 		curScreen = screen;
 		
-		int dx = curScreen * WIDTH - getScrollX() ; 
+		int dx = curScreen * w - getScrollX() ;
 		mScroller.startScroll(getScrollX(), 0, dx, 0,Math.abs(dx) * 1);  
         invalidate(); 
 	}
@@ -236,15 +266,15 @@ public class CustomViewGroup extends ViewGroup{
 
 	private void reLayout() {
 		Log.d("test_wp", "reLayout()--scrollX="+getScrollX());
-		setScrollX(WIDTH);
+		setScrollX(w);
 		if(view1 != null){
-			view1.layout(0, 0, WIDTH, HEIGHT);
+			view1.layout(0, 0, w, h);
 		}
 		if(view2 != null){
-			view2.layout(WIDTH, 0, 2*WIDTH, WIDTH);
+			view2.layout(w, 0, 2*w, h);
 		}
 		if(view3 != null){
-			view3.layout(2*WIDTH, 0, 3*WIDTH, HEIGHT);
+			view3.layout(2*w, 0, 3*w, h);
 		}
 	}
 
