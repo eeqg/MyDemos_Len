@@ -1,25 +1,35 @@
 package com.example.mydemos_len.activitys;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Activity;
 import android.os.Environment;
-import android.os.Parcelable;
 import android.provider.MediaStore;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.mydemos_len.R;
+import com.example.mydemos_len.utils.GlideLoader;
+import com.example.mydemos_len.utils.ShowImageAdapter;
+import com.yancy.imageselector.ImageConfig;
+import com.yancy.imageselector.ImageSelector;
+import com.yancy.imageselector.ImageSelectorActivity;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PicturePickActivity extends Activity {
 	private final int REQUEST_CODE_GALLERY = 0;
 	private final int REQUEST_CODE_CAMERA = 1;
 	private final int REQUEST_CODE_CROP = 2;
+	private final int REQUEST_CODE_SELECTOR = 3;
 	/** 临时存放图片的地址，如需修改，请记得创建该路径下的文件夹 */
 	private static final String tempFilePath = "file:///sdcard/temp.jpg";
 	/* 头像名称 */
@@ -28,12 +38,20 @@ public class PicturePickActivity extends Activity {
 	
 	ImageView imgView;
 	
+	private ArrayList<String> path = new ArrayList<>();
+	private ShowImageAdapter adapter;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_picture_pick);
 		
 		imgView = (ImageView) findViewById(R.id.imageView2);
+		RecyclerView recycler = (RecyclerView) findViewById(R.id.rvShowImage);
+		
+		recycler.setLayoutManager(new GridLayoutManager(this, 3));
+		adapter = new ShowImageAdapter(this, path);
+		recycler.setAdapter(adapter);
 	}
 	
 	public void fromGallery(View view) {
@@ -52,7 +70,7 @@ public class PicturePickActivity extends Activity {
 			Uri uri = Uri.fromFile(tempFile);
 			intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
 		}
-		// 开启一个带有返回值的Activity，请求码为PHOTO_REQUEST_CAREMA
+		// 开启一个带有返回值的Activity，请求码为PHOTO_REQUEST_CAMERA
 		startActivityForResult(intent, REQUEST_CODE_CAMERA);
 	}
 	
@@ -60,11 +78,7 @@ public class PicturePickActivity extends Activity {
 	 * 判断sdcard是否被挂载
 	 */
 	private boolean hasSdcard() {
-		if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-			return true;
-		} else {
-			return false;
-		}
+		return Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
 	}
 	
 	private void crop(Uri uri) {
@@ -108,6 +122,36 @@ public class PicturePickActivity extends Activity {
 		startActivityForResult(intent, REQUEST_CODE_CROP);
 	}
 	
+	public void formImageSelector(View view) {
+		ImageConfig imageConfig
+				= new ImageConfig.Builder(
+				// GlideLoader 可用自己用的缓存库
+				new GlideLoader())
+				// 如果在 4.4 以上，则修改状态栏颜色 （默认黑色）
+				.steepToolBarColor(getResources().getColor(R.color.blue))
+				// 标题的背景颜色 （默认黑色）
+				.titleBgColor(getResources().getColor(R.color.blue))
+				// 提交按钮字体的颜色  （默认白色）
+				.titleSubmitTextColor(getResources().getColor(R.color.white))
+				// 标题颜色 （默认白色）
+				.titleTextColor(getResources().getColor(R.color.white))
+				// 开启多选   （默认为多选）  (单选 为 singleSelect)
+				.singleSelect()
+				//剪切
+				//.crop()
+				// 多选时的最大数量   （默认 9 张）
+				.mutiSelectMaxSize(9)
+				// 已选择的图片路径
+				.pathList(path)
+				// 拍照后存放的图片路径（默认 /temp/picture）
+				.filePath("/ImageSelector/Pictures")
+				// 开启拍照功能 （默认开启）
+				.showCamera()
+				.requestCode(REQUEST_CODE_SELECTOR)
+				.build();
+		ImageSelector.open(PicturePickActivity.this, imageConfig);   // 开启图片选择器
+	}
+	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
@@ -124,7 +168,7 @@ public class PicturePickActivity extends Activity {
 				if (hasSdcard()) {
 					crop(Uri.fromFile(tempFile));
 				} else {
-					Toast.makeText(this, "未找到存储卡，无法存储照片！", 0).show();
+					Toast.makeText(this, "未找到存储卡，无法存储照片！", Toast.LENGTH_SHORT).show();
 				}
 				break;
 			case REQUEST_CODE_CROP:
@@ -139,6 +183,21 @@ public class PicturePickActivity extends Activity {
 				// } catch (Exception e) {
 				// 	e.printStackTrace();
 				// }
+				break;
+			case REQUEST_CODE_SELECTOR:
+				if (data == null) {
+					return;
+				}
+				
+				List<String> pathList = data.getStringArrayListExtra(ImageSelectorActivity.EXTRA_RESULT);
+				
+				for (String path : pathList) {
+					Log.i("ImagePathList", path);
+				}
+				
+				path.clear();
+				path.addAll(pathList);
+				adapter.notifyDataSetChanged();
 				break;
 		}
 	}
