@@ -1,39 +1,157 @@
-import java.util.jar.Attributes
+/**
+ * app/build.gradle 默认三个小节点：apply、android和dependencies。
+ *
+ * apply是一个方法，给它传递了一个参数plugin，plugin 的值是'com.android.application'。
+ * 如果有多个参数，则以逗号隔开，例如：compile name: 'volley', ext: 'aar'。
+ */
 
 apply plugin: 'com.android.application'
 
+/**
+ * android 项目配置
+ */
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
-
     defaultConfig {
         applicationId "com.example.mydemos_len"
         minSdkVersion 21
         targetSdkVersion 21
+        versionName '1.0'
+        versionCode 1
     }
+
+//    sourceSets {
+//        main {
+//            manifest.srcFile 'AndroidManifest.xml'
+//            java.srcDirs = ['src']
+//            resources.srcDirs = ['src']
+//            aidl.srcDirs = ['src']
+//            renderscript.srcDirs = ['src']
+//            res.srcDirs = ['res']
+//            assets.srcDirs = ['assets']
+//        }
+//
+//        // Move the tests to tests/java, tests/res, etc...
+//        instrumentTest.setRoot('tests')
+//
+//        // Move the build types to build-types/<type>
+//        // For instance, build-types/debug/java, build-types/debug/AndroidManifest.xml, ...
+//        // This moves them out of them default location under src/<type>/... which would
+//        // conflict with src/ being used by the main source set.
+//        // Adding new build types or product flavors should be accompanied
+//        // by a similar customization.
+//        debug.setRoot('build-types/debug')
+//        release.setRoot('build-types/release')
+//    }
 
     /**
      * 签名设置
      */
-    signingConfigs {}
-
+    signingConfigs {
+        myConfigs {
+            storeFile file("../keystore.jks")
+            storePassword "123456"
+            keyAlias "wp"
+            keyPassword "123456"
+        }
+    }
     /**
-     * 混淆设置
+     * buildTypes
      */
     buildTypes {
+        //默认是release
         release {
-            minifyEnabled false // 是否进行混淆
+            // 自定义config属性: "LOG_DEBUG" 不显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+
+            minifyEnabled true
+            debuggable false
+
+            // 是否进行混淆
+            minifyEnabled false
             // 混淆文件的位置
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            //签名
+            signingConfig signingConfigs.myConfigs
+        }
+        debug {
+            // 显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+
+            minifyEnabled false
+            debuggable true
+
+            // 是否进行混淆
+            minifyEnabled false
+            // 混淆文件的位置
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            //签名
+            signingConfig signingConfigs.myConfigs
+        }
+    }
+
+    /**
+     * 产品渠道
+     */
+    productFlavors {
+//        GooglePlay {}
+//        xiaomi {}
+//        umeng {}
+    }
+
+    //修改生成的apk名字
+    applicationVariants.all { variant ->
+
+        if (variant.buildType.name.equals('release')) {
+            variant.outputs.each { output ->
+                def appName = 'MyDemos'
+                def oldFile = output.outputFile
+                def buildName = 'GooglePlay'
+                def releaseApkName
+
+                variant.productFlavors.each { product ->
+                    //buildName = product.name
+                }
+
+                releaseApkName = appName + /*getVersionNameFromManifest()*/versionName + '-' + buildName + '-' + getDate() + '.apk'
+                output.outputFile = new File(oldFile.parent, releaseApkName)
+            }
         }
     }
 }
 
+//获取时间戳
+def getDate() {
+    def date = new Date()
+    def formattedDate = date.format('yyyyMMddHHmm')
+    return formattedDate
+}
+
+//从androidManifest.xml中获取版本号
+//def getVersionNameFromManifest() {
+//    def manifestParser = new com.android.builder.core.DefaultManifestParser()
+//    return manifestParser.getVersionName(android.sourceSets.main.manifest.srcFile)
+//}
+
+
+//声明
 repositories {
     flatDir { dirs 'libs' }
 }
 
-//依赖库
+/**
+ * add 依赖库
+ *
+ * //单文件依赖
+ *   compile files('libs/android-support-v4.jar')
+ * //某个文件夹下面全部依赖
+ *   compile fileTree(dir: 'libs', include: '*.jar')
+ */
+
+
 dependencies {
     compile project(':okhttputils')
     compile 'com.android.support:support-v4:20.0.0'
