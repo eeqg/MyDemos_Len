@@ -8,6 +8,7 @@ import com.example.mydemos_len.activitys.OkhttpUtilsTestActivity;
 import com.example.mydemos_len.activitys.PicturePickActivity;
 import com.example.mydemos_len.activitys.SearchViewActivity;
 import com.example.mydemos_len.activitys.TableHostActivity;
+import com.example.mydemos_len.activitys.TagViewActivity;
 import com.example.mydemos_len.utils.DividerItemDecoration;
 
 import android.animation.Animator;
@@ -97,6 +98,9 @@ public class BbFragment extends Fragment implements View.OnClickListener{
 					case "OkHttpUtils":
 						startActivity(new Intent(BbFragment.this.getActivity(), OkhttpUtilsTestActivity.class));
 						break;
+					case "TagView":
+						startActivity(new Intent(BbFragment.this.getActivity(), TagViewActivity.class));
+						break;
 				}
 			}
 
@@ -122,7 +126,7 @@ public class BbFragment extends Fragment implements View.OnClickListener{
 		originData.add(new TestBean("DrawerLayout","侧滑菜单, 下拉刷新, 上拉加载..."));
 		originData.add(new TestBean("PicturePicker","图片选择器"));
 		originData.add(new TestBean("OkHttpUtils","test the OkHttp"));
-		originData.add(new TestBean("FFF","fff"));
+		originData.add(new TestBean("TagView","标签layout"));
 		originData.add(new TestBean("ASDFG","fff"));
 
 		attempData.addAll(originData);

@@ -78,7 +78,7 @@ android {
      * Terminal 执行 assembleRelease 或 assembleDebug 可一次性打包.
      */
     productFlavors {
-        defaultApk{}
+        defaultApk {}
         GooglePlay {
             applicationId "com.example.mydemos_len.google_play"
 
@@ -135,7 +135,6 @@ def getDate() {
 //    return manifestParser.getVersionName(android.sourceSets.main.manifest.srcFile)
 //}
 
-
 //声明
 repositories {
     flatDir { dirs 'libs' }
@@ -153,19 +152,19 @@ repositories {
 
 dependencies {
     compile project(':okhttputils')
+    //add gson
+    //添加imageselector-release.aar包
+    compile(name: "imageselector-release", ext: "aar")
+    //add glide
     compile 'com.android.support:support-v4:20.0.0'
     compile 'com.android.support:recyclerview-v7:21.0.3'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:appcompat-v7:25.3.0'
     compile 'com.android.support:design:25.3.0'
-    //add gson
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'io.reactivex:rxjava:1.2.7'
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'com.trello:rxlifecycle:0.3.0'
     compile 'com.trello:rxlifecycle-components:0.3.0'
-    //添加imageselector-release.aar包
-    compile(name: "imageselector-release", ext: "aar")
-    //add glide
     compile 'com.github.bumptech.glide:glide:3.7.0'
 }

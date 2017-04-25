@@ -84,6 +84,8 @@
             android:name=".activitys.PicturePickActivity"
             android:label="@string/title_activity_picture_pick">
         </activity>
+        <activity android:name=".activitys.TagViewActivity">
+        </activity>
     </application>
 
 </manifest>
