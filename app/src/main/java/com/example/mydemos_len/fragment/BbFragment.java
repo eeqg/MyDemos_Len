@@ -3,6 +3,7 @@ package com.example.mydemos_len.fragment;
 
 import com.example.mydemos_len.R;
 import com.example.mydemos_len.R.layout;
+import com.example.mydemos_len.activitys.BannerViewActivity;
 import com.example.mydemos_len.activitys.DrawerLayoutActivity;
 import com.example.mydemos_len.activitys.OkhttpUtilsTestActivity;
 import com.example.mydemos_len.activitys.PicturePickActivity;
@@ -101,6 +102,9 @@ public class BbFragment extends Fragment implements View.OnClickListener{
 					case "TagView":
 						startActivity(new Intent(BbFragment.this.getActivity(), TagViewActivity.class));
 						break;
+					case "BannerView":
+						startActivity(new Intent(BbFragment.this.getActivity(), BannerViewActivity.class));
+						break;
 				}
 			}
 
@@ -127,7 +131,7 @@ public class BbFragment extends Fragment implements View.OnClickListener{
 		originData.add(new TestBean("PicturePicker","图片选择器"));
 		originData.add(new TestBean("OkHttpUtils","test the OkHttp"));
 		originData.add(new TestBean("TagView","标签layout"));
-		originData.add(new TestBean("ASDFG","fff"));
+		originData.add(new TestBean("BannerView","循环 轮播 viewpager"));
 
 		attempData.addAll(originData);
 	}

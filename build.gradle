@@ -23,9 +23,8 @@ allprojects {
         jcenter()
     }
 }
-/*
+
 //声明任务 (可选)
 task clean(type: Delete) {  //可在terminal中执行 gradlew clean 来执行这个task.
     delete rootProject.buildDir
 }
-*/
