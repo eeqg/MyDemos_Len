@@ -45,6 +45,7 @@ public class ImagePagerAdapter<T> extends PagerAdapter {
 	public Object instantiateItem(ViewGroup container, int position) {
 		Log.d("test_wp", "position="+position);
 		int realPosition = toRealPosition(position);
+		Log.d("test_wp", "realPosition="+realPosition);
 		
 		imageView = new ImageView(container.getContext());
 		imageView.setScaleType(ImageView.ScaleType.FIT_XY);

@@ -3,6 +3,7 @@ package com.example.mydemos_len.activitys;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
@@ -43,6 +44,7 @@ public class BannerViewActivity extends Activity {
 	private ArrayList<Integer> localImages = new ArrayList<Integer>();
 	private ArrayList<String> transformerList = new ArrayList<String>();
 	private ConvenientBanner convenientBanner;
+	private ViewPager viewpager;
 	private int transformerIndex = 0;
 	private Subscription subscription;
 	private boolean autoLoop = true;
@@ -75,7 +77,7 @@ public class BannerViewActivity extends Activity {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		subscription.unsubscribe();
+		if(subscription != null)subscription.unsubscribe();
 	}
 	
 	private void initData(){
@@ -83,7 +85,7 @@ public class BannerViewActivity extends Activity {
 	}
 	
 	private void initView(){
-		final ViewPager viewpager = (ViewPager) findViewById(R.id.viewpager_banner);
+		viewpager = (ViewPager) findViewById(R.id.viewpager_banner);
 		viewpager.setAdapter(new ImagePagerAdapter<Integer>(localImages));
 		viewpager.setOnTouchListener(new View.OnTouchListener() {
 			@Override
@@ -102,18 +104,11 @@ public class BannerViewActivity extends Activity {
 			}
 		});
 		
-		subscription = Observable.interval(3000, TimeUnit.MILLISECONDS)
-				.subscribeOn(Schedulers.computation())
-				.observeOn(AndroidSchedulers.mainThread())
-				.subscribe(new Action1<Long>() {
-					@Override
-					public void call(Long aLong) {
-						if(!autoLoop) return;
-						viewpager.setCurrentItem(viewpager.getCurrentItem() + 1);
-					}
-				});
+		//startLoop();
 		
-		viewpager.setCurrentItem(Integer.MAX_VALUE / 2);
+		int itemMod = (Integer.MAX_VALUE / 2) % localImages.size();
+		Log.d("test_wp","itemMod=="+itemMod);
+		viewpager.setCurrentItem(Integer.MAX_VALUE / 2 - itemMod);//初始化显示第一页
 		
 		//- - - - - - - - - - - - - - -- - - -
 		
@@ -162,6 +157,19 @@ public class BannerViewActivity extends Activity {
 				}
 			}
 		});
+	}
+	
+	private void startLoop(){
+		subscription = Observable.interval(3000, TimeUnit.MILLISECONDS)
+				.subscribeOn(Schedulers.computation())
+				.observeOn(AndroidSchedulers.mainThread())
+				.subscribe(new Action1<Long>() {
+					@Override
+					public void call(Long aLong) {
+						if(!autoLoop) return;
+						viewpager.setCurrentItem(viewpager.getCurrentItem() + 1);
+					}
+				});
 	}
 	
 	private void loadTestData() {
