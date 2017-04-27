@@ -120,6 +120,12 @@ android {
             }
         }
     }
+
+//    sourceSets {
+//        main {
+//            jniLibs.srcDirs = ['libs']
+//        }
+//    }
 }
 
 //获取时间戳
@@ -148,8 +154,6 @@ repositories {
  * //某个文件夹下面全部依赖
  *   compile fileTree(dir: 'libs', include: '*.jar')
  */
-
-
 dependencies {
     compile project(':okhttputils')
     //add gson
