@@ -156,6 +156,8 @@ dependencies {
     //添加imageselector-release.aar包
     compile(name: "imageselector-release", ext: "aar")
     //add glide
+    //banner view
+    //viewpager Transformer
     compile 'com.android.support:support-v4:20.0.0'
     compile 'com.android.support:recyclerview-v7:21.0.3'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
@@ -167,8 +169,7 @@ dependencies {
     compile 'com.trello:rxlifecycle:0.3.0'
     compile 'com.trello:rxlifecycle-components:0.3.0'
     compile 'com.github.bumptech.glide:glide:3.7.0'
-    //banner view
     compile 'com.bigkoo:convenientbanner:2.0.5'
-    //viewpager Transformer
     compile 'com.ToxicBakery.viewpager.transforms:view-pager-transforms:1.2.32@aar'
+    compile files('libs/BaiduLBS_Android.jar')
 }
