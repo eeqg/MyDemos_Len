@@ -1,18 +1,6 @@
 package com.example.mydemos_len.fragment;
 
 
-import com.example.mydemos_len.R;
-import com.example.mydemos_len.R.layout;
-import com.example.mydemos_len.activitys.BannerViewActivity;
-import com.example.mydemos_len.activitys.DrawerLayoutActivity;
-import com.example.mydemos_len.activitys.LocationActivity;
-import com.example.mydemos_len.activitys.OkhttpUtilsTestActivity;
-import com.example.mydemos_len.activitys.PicturePickActivity;
-import com.example.mydemos_len.activitys.SearchViewActivity;
-import com.example.mydemos_len.activitys.TableHostActivity;
-import com.example.mydemos_len.activitys.TagViewActivity;
-import com.example.mydemos_len.utils.DividerItemDecoration;
-
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.content.Context;
@@ -22,31 +10,36 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
-import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import junit.framework.Test;
-
-import org.w3c.dom.Text;
+import com.example.mydemos_len.R;
+import com.example.mydemos_len.activitys.BannerViewActivity;
+import com.example.mydemos_len.activitys.DrawerLayoutActivity;
+import com.example.mydemos_len.activitys.FloatingActionActivity;
+import com.example.mydemos_len.activitys.LocationActivity;
+import com.example.mydemos_len.activitys.OkhttpUtilsTestActivity;
+import com.example.mydemos_len.activitys.PicturePickActivity;
+import com.example.mydemos_len.activitys.SearchViewActivity;
+import com.example.mydemos_len.activitys.TableHostActivity;
+import com.example.mydemos_len.activitys.TagViewActivity;
+import com.example.mydemos_len.bean.TestTitleBean;
+import com.example.mydemos_len.utils.DividerItemDecoration;
+import com.example.mydemos_len.utils.MyAdapter;
 
 import java.util.ArrayList;
 
 public class BbFragment extends Fragment implements View.OnClickListener{
 
-	private ArrayList<TestBean> originData = new ArrayList<TestBean>();
-	private ArrayList<TestBean> attempData = new ArrayList<TestBean>();
-	private ArrayList<TestBean> searchData = new ArrayList<TestBean>();
+	private ArrayList<TestTitleBean> originData = new ArrayList<TestTitleBean>();
+	private ArrayList<TestTitleBean> attempData = new ArrayList<TestTitleBean>();
+	private ArrayList<TestTitleBean> searchData = new ArrayList<TestTitleBean>();
 	private MyAdapter adapter;
 	EditText searchView;
 	View searchLayout;
@@ -75,11 +68,11 @@ public class BbFragment extends Fragment implements View.OnClickListener{
 
 		initData();
 
-		adapter = new MyAdapter();
+		adapter = new MyAdapter(getActivity(), attempData);
 		recyclerView.setAdapter(adapter);
 		recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
 
-		adapter.setOnItemClickListener(new OnItemClickListener() {
+		adapter.setOnItemClickListener(new MyAdapter.OnItemClickListener() {
 			@Override
 			public void onItemClick(View view, int position, String title) {
 				//Log.d("test_wp", BbFragment.this.getClass().getSimpleName()+"--"+position);
@@ -109,6 +102,9 @@ public class BbFragment extends Fragment implements View.OnClickListener{
 					case "Location":
 						startActivity(new Intent(BbFragment.this.getActivity(), LocationActivity.class));
 						break;
+					case "FloatingAction":
+						startActivity(new Intent(BbFragment.this.getActivity(), FloatingActionActivity.class));
+						break;
 				}
 			}
 
@@ -129,14 +125,16 @@ public class BbFragment extends Fragment implements View.OnClickListener{
 	}
 
 	private void initData(){
-		originData.add(new TestBean("TabHost","TabLayout + ViewPager + Fragment"));
-		originData.add(new TestBean("SearchView","aaa"));
-		originData.add(new TestBean("DrawerLayout","侧滑菜单, 下拉刷新, 上拉加载..."));
-		originData.add(new TestBean("PicturePicker","图片选择器"));
-		originData.add(new TestBean("OkHttpUtils","test the OkHttp"));
-		originData.add(new TestBean("TagView","标签layout"));
-		originData.add(new TestBean("BannerView","循环 轮播 viewpager"));
-		originData.add(new TestBean("Location","定位"));
+		originData.add(new TestTitleBean("TabHost","TabLayout + ViewPager + Fragment"));
+		originData.add(new TestTitleBean("SearchView","aaa"));
+		originData.add(new TestTitleBean("DrawerLayout","侧滑菜单, 下拉刷新, 上拉加载..."));
+		originData.add(new TestTitleBean("PicturePicker","图片选择器"));
+		originData.add(new TestTitleBean("OkHttpUtils","test the OkHttp"));
+		originData.add(new TestTitleBean("TagView","标签layout"));
+		originData.add(new TestTitleBean("BannerView","循环 轮播 viewpager"));
+		originData.add(new TestTitleBean("Location","定位"));
+		originData.add(new TestTitleBean("FloatingAction",""));
+		originData.add(new TestTitleBean("",""));
 
 		attempData.addAll(originData);
 	}
@@ -193,7 +191,7 @@ public class BbFragment extends Fragment implements View.OnClickListener{
 		public void afterTextChanged(Editable s) {
 			Log.d("test_wp", BbFragment.this.getClass().getSimpleName()+"--onTextChanged--s="+s);
 			searchData.clear();
-			for (TestBean testBean: originData) {
+			for (TestTitleBean testBean: originData) {
 				Log.d("test_wp", BbFragment.this.getClass().getSimpleName()+"--onTextChanged--title="+testBean.title);
 				if(testBean.title.toUpperCase().contains(s.toString().toUpperCase())){
 					searchData.add(testBean);
@@ -250,68 +248,6 @@ public class BbFragment extends Fragment implements View.OnClickListener{
 		super.onDestroy();
 	}
 
-	public interface OnItemClickListener{
-		void onItemClick(View view, int position, String title);
-		void onItemLongClick(View view , int position);
-	}
+	
 
-	public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
-		private OnItemClickListener listener;
-
-		@Override
-		public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-			View view = LayoutInflater.from(getActivity()).inflate(layout.item_title, null);
-			return new MyViewHolder(view);
-		}
-
-		public void setOnItemClickListener(OnItemClickListener l){
-			this.listener = l;
-		}
-
-		@Override
-		public void onBindViewHolder(final MyViewHolder holder, final int position) {
-			holder.titleView.setText(attempData.get(position).title);
-			holder.subView.setText(attempData.get(position).subTitle);
-
-			if(listener != null){
-				//click
-				holder.contentView.setOnClickListener(new View.OnClickListener(){
-					@Override
-					public void onClick(View view) {
-						listener.onItemClick(holder.contentView, position, attempData.get(position).title);
-					}
-				});
-			}
-		}
-
-		@Override
-		public int getItemCount() {
-			return attempData.size();
-		}
-
-
-		public class MyViewHolder extends RecyclerView.ViewHolder{
-			public View contentView ;
-			public ImageView imageView;
-			public TextView titleView;
-			public TextView subView;
-			public MyViewHolder(View view){
-				super(view);
-				contentView = view.findViewById(R.id.contentView);
-				imageView = (ImageView) view.findViewById(R.id.item_photo);
-				titleView = (TextView) view.findViewById(R.id.item_name);
-				subView = (TextView) view.findViewById(R.id.item_number);
-			}
-		}
-
-	}
-
-	private class TestBean{
-		public String title;
-		public String subTitle;
-		public TestBean(String title, String subTitle){
-			this.title = title;
-			this.subTitle = subTitle;
-		}
-	}
 }

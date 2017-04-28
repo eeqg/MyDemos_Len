@@ -22,5 +22,6 @@
     <string name="title_activity_drawer_layout">DrawerLayoutActivity</string>
     <string name="title_activity_picture_pick">PicturePickActivity</string>
     <string name="title_activity_location">LocationActivity</string>
+    <string name="title_activity_floating_action">FloatingActionActivity</string>
 
 </resources>

@@ -11,7 +11,7 @@ public class LogUtils {
     /**
      * 控制变量，是否显示log日志
      */
-    public static boolean isShowLog = false;
+    public static boolean isShowLog = true;
     public static String defaultMsg = "";
     public static final int V = 1;
     public static final int D = 2;
@@ -54,7 +54,7 @@ public class LogUtils {
     }
 
     public static void d(Object obj) {
-        llog(D, null, obj);
+        llog(D, "test_wp", obj);
     }
 
     public static void d(String tag, Object obj) {

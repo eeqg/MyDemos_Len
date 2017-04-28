@@ -121,6 +121,11 @@
             android:name=".activitys.LocationActivity"
             android:label="@string/title_activity_location">
         </activity>
+        <activity
+            android:name=".activitys.FloatingActionActivity"
+            android:label="@string/title_activity_floating_action"
+            android:theme="@style/Theme.AppCompat.Light">
+        </activity>
     </application>
 
 </manifest>
