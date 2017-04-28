@@ -155,25 +155,29 @@ repositories {
  *   compile fileTree(dir: 'libs', include: '*.jar')
  */
 dependencies {
-    compile project(':okhttputils')
-    //add gson
-    //添加imageselector-release.aar包
-    compile(name: "imageselector-release", ext: "aar")
-    //add glide
-    //banner view
-    //viewpager Transformer
     compile 'com.android.support:support-v4:20.0.0'
     compile 'com.android.support:recyclerview-v7:21.0.3'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:appcompat-v7:25.3.0'
     compile 'com.android.support:design:25.3.0'
+    //add gson
     compile 'com.google.code.gson:gson:2.8.0'
+    //rxjava rxandroid
     compile 'io.reactivex:rxjava:1.2.7'
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'com.trello:rxlifecycle:0.3.0'
     compile 'com.trello:rxlifecycle-components:0.3.0'
+    //add glide
     compile 'com.github.bumptech.glide:glide:3.7.0'
+    //convenientbanner
     compile 'com.bigkoo:convenientbanner:2.0.5'
+    //viewpager transforms
     compile 'com.ToxicBakery.viewpager.transforms:view-pager-transforms:1.2.32@aar'
+
+    //+jar
     compile files('libs/BaiduLBS_Android.jar')
+    //+module
+    compile project(':okhttputils')
+    //添加imageselector-release.aar包
+    compile(name: "imageselector-release", ext: "aar")
 }
