@@ -2,7 +2,12 @@ package com.example.mydemos_len;
 
 import android.app.Application;
 import android.app.Service;
+import android.content.Context;
 import android.os.Vibrator;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
+
 import com.baidu.mapapi.SDKInitializer;
 import com.example.mydemos_len.service.LocationService;
 
@@ -11,6 +16,12 @@ import com.example.mydemos_len.service.LocationService;
  */
 
 public class APP extends Application {
+	
+	/** 屏幕宽度 */
+	public static int SCREEN_WIDTH;
+	/** 屏幕高度 */
+	public static int SCREEN_HEIGHT;
+	
 	public LocationService locationService;
 	public Vibrator mVibrator;
 	@Override
@@ -23,5 +34,20 @@ public class APP extends Application {
 		mVibrator =(Vibrator)getApplicationContext().getSystemService(Service.VIBRATOR_SERVICE);
 		// SDKInitializer.initialize(getApplicationContext());
 		
+		
+		initScreenSize();
+	}
+	
+	/**
+	 * 获取屏幕大小
+	 */
+	private void initScreenSize() {
+		final WindowManager windowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+		final Display display = windowManager.getDefaultDisplay();
+		DisplayMetrics displayMetrics = new DisplayMetrics();
+		display.getMetrics(displayMetrics);
+		boolean isPortrait = displayMetrics.widthPixels < displayMetrics.heightPixels;
+		SCREEN_WIDTH = isPortrait ? displayMetrics.widthPixels : displayMetrics.heightPixels;
+		SCREEN_HEIGHT = isPortrait ? displayMetrics.heightPixels : displayMetrics.widthPixels;
 	}
 }
