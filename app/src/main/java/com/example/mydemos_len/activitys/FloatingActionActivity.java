@@ -8,7 +8,7 @@ import android.view.View;
 
 import com.example.mydemos_len.R;
 import com.example.mydemos_len.bean.TestTitleBean;
-import com.example.mydemos_len.utils.DividerItemDecoration;
+import com.example.mydemos_len.utils.ItemDecoration;
 import com.example.mydemos_len.utils.LogUtils;
 import com.example.mydemos_len.utils.MyAdapter;
 import com.github.fafaldo.fabtoolbar.widget.FABToolbarLayout;
@@ -37,7 +37,8 @@ public class FloatingActionActivity extends Activity {
 		recyclerView.setLayoutManager(new LinearLayoutManager(this));
 		adapter = new MyAdapter(this, originData);
 		recyclerView.setAdapter(adapter);
-		recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));
+		//recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));
+		recyclerView.addItemDecoration(new ItemDecoration(this));
 	}
 	
 	private void initData() {

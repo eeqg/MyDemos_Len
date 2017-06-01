@@ -102,7 +102,7 @@ public class BbFragment extends Fragment implements View.OnClickListener{
 					case "Location":
 						startActivity(new Intent(BbFragment.this.getActivity(), LocationActivity.class));
 						break;
-					case "FloatingAction":
+					case "FloatingActionButton":
 						startActivity(new Intent(BbFragment.this.getActivity(), FloatingActionActivity.class));
 						break;
 				}
@@ -133,7 +133,7 @@ public class BbFragment extends Fragment implements View.OnClickListener{
 		originData.add(new TestTitleBean("TagView","标签layout"));
 		originData.add(new TestTitleBean("BannerView","循环 轮播 viewpager"));
 		originData.add(new TestTitleBean("Location","定位"));
-		originData.add(new TestTitleBean("FloatingAction",""));
+		originData.add(new TestTitleBean("FloatingActionButton","FAB"));
 		originData.add(new TestTitleBean("",""));
 
 		attempData.addAll(originData);

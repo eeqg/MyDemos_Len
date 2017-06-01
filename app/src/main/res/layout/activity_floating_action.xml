@@ -40,6 +40,7 @@
                 app:fabSize="normal"
                 app:borderWidth="0dp"
                 app:backgroundTint="#19a955"
+                android:clickable="true"
                 android:src="@drawable/ic_more"/>
 
         </RelativeLayout>
