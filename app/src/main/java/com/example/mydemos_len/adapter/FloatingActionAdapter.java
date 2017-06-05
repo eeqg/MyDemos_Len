@@ -1,4 +1,4 @@
-package com.example.mydemos_len.utils;
+package com.example.mydemos_len.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.mydemos_len.APP;
 import com.example.mydemos_len.R;
 import com.example.mydemos_len.bean.TestTitleBean;
+import com.example.mydemos_len.utils.LogUtils;
 
 import java.util.ArrayList;
 

@@ -9,10 +9,9 @@ import android.widget.TextView;
 
 import com.example.mydemos_len.R;
 import com.example.mydemos_len.bean.TestTitleBean;
-import com.example.mydemos_len.utils.FloatingActionAdapter;
+import com.example.mydemos_len.adapter.FloatingActionAdapter;
 import com.example.mydemos_len.utils.ItemDecoration;
 import com.example.mydemos_len.utils.LogUtils;
-import com.example.mydemos_len.utils.MyAdapter;
 import com.github.fafaldo.fabtoolbar.widget.FABToolbarLayout;
 
 import java.util.ArrayList;

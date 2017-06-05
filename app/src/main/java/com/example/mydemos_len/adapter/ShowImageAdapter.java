@@ -1,4 +1,4 @@
-package com.example.mydemos_len.utils;
+package com.example.mydemos_len.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

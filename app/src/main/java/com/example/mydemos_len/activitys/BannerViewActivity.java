@@ -27,7 +27,7 @@ import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 import com.bigkoo.convenientbanner.listener.OnItemClickListener;
 import com.example.mydemos_len.R;
-import com.example.mydemos_len.utils.ImagePagerAdapter;
+import com.example.mydemos_len.adapter.ImagePagerAdapter;
 import com.example.mydemos_len.utils.LocalImageHolderView;
 
 import java.lang.reflect.Field;

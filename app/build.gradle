@@ -25,6 +25,11 @@ android {
         buildConfigField "int", "fortest", "0"
     }
 
+    dataBinding {
+        //dataBinding
+        enabled = true
+    }
+
     /**
      * 签名设置
      */
@@ -170,8 +175,8 @@ dependencies {
     compile 'com.android.support:support-v4:20.0.0'
     compile 'com.android.support:recyclerview-v7:22.2.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:appcompat-v7:25.3.0'
-    compile 'com.android.support:design:25.3.0'
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:design:25.3.1'
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'io.reactivex:rxjava:1.2.7'
     compile 'io.reactivex:rxandroid:1.2.1'
@@ -181,4 +186,7 @@ dependencies {
     compile 'com.bigkoo:convenientbanner:2.0.5'
     compile 'com.ToxicBakery.viewpager.transforms:view-pager-transforms:1.2.32@aar'
     compile 'com.github.fafaldo:fab-toolbar:1.2.0'
+
+    //self
+    compile 'com.github.wangpeng28:MyDevelopmentUtilAssemble:v1.1'
 }

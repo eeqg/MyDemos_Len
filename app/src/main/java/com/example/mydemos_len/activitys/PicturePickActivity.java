@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.example.mydemos_len.R;
 import com.example.mydemos_len.utils.GlideLoader;
-import com.example.mydemos_len.utils.ShowImageAdapter;
+import com.example.mydemos_len.adapter.ShowImageAdapter;
 import com.yancy.imageselector.ImageConfig;
 import com.yancy.imageselector.ImageSelector;
 import com.yancy.imageselector.ImageSelectorActivity;

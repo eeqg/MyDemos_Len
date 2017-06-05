@@ -7,4 +7,20 @@
     <color name="colorSwipeRefreshProgressInner2">#32ff38</color>
     <color name="colorSwipeRefreshProgressInner3">#3238ff</color>
     <color name="colorSwipeRefreshProgressOuter">#1032aa38</color>
+
+    <!-- 重点 -->
+    <color name="colorTextAccent">#EC1D2E</color>
+    <!-- 主级 -->
+    <color name="colorTextPrimary">#252525</color>
+    <!-- 次级 -->
+    <color name="colorTextSecondary">#030303</color>
+    <!-- 辅助 -->
+    <color name="colorTextAssisted">#808080</color>
+    <!-- 提示 -->
+    <color name="colorTextHint">#8F8E94</color>
+    <!-- 忽略 -->
+    <color name="colorTextInessential">#999999</color>
+
+    <!-- 分割线 -->
+    <color name="colorDivider">#EFEFEF</color>
 </resources>

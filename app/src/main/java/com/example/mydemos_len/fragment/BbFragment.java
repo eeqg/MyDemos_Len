@@ -27,11 +27,12 @@ import com.example.mydemos_len.activitys.LocationActivity;
 import com.example.mydemos_len.activitys.OkhttpUtilsTestActivity;
 import com.example.mydemos_len.activitys.PicturePickActivity;
 import com.example.mydemos_len.activitys.SearchViewActivity;
+import com.example.mydemos_len.activitys.TabLayoutActivity;
 import com.example.mydemos_len.activitys.TableHostActivity;
 import com.example.mydemos_len.activitys.TagViewActivity;
 import com.example.mydemos_len.bean.TestTitleBean;
 import com.example.mydemos_len.utils.DividerItemDecoration;
-import com.example.mydemos_len.utils.MyAdapter;
+import com.example.mydemos_len.adapter.MyAdapter;
 
 import java.util.ArrayList;
 
@@ -105,6 +106,9 @@ public class BbFragment extends Fragment implements View.OnClickListener{
 					case "FloatingActionButton":
 						startActivity(new Intent(BbFragment.this.getActivity(), FloatingActionActivity.class));
 						break;
+					case "TabLayout":
+						startActivity(new Intent(BbFragment.this.getActivity(), TabLayoutActivity.class));
+						break;
 				}
 			}
 
@@ -134,7 +138,7 @@ public class BbFragment extends Fragment implements View.OnClickListener{
 		originData.add(new TestTitleBean("BannerView","循环 轮播 viewpager"));
 		originData.add(new TestTitleBean("Location","定位"));
 		originData.add(new TestTitleBean("FloatingActionButton","FAB"));
-		originData.add(new TestTitleBean("",""));
+		originData.add(new TestTitleBean("TabLayout",""));
 
 		attempData.addAll(originData);
 	}
