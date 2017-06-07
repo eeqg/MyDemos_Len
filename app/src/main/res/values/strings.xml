@@ -24,5 +24,6 @@
     <string name="title_activity_location">LocationActivity</string>
     <string name="title_activity_floating_action">FloatingActionActivity</string>
     <string name="title_activity_tablayout">TablayoutActivity</string>
+    <string name="title_activity_xrecycler_view">XRecyclerViewActivity</string>
 
 </resources>

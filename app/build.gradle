@@ -188,5 +188,5 @@ dependencies {
     compile 'com.github.fafaldo:fab-toolbar:1.2.0'
 
     //self
-    compile 'com.github.wangpeng28:MyDevelopmentUtilAssemble:v1.1'
+    compile 'com.github.wangpeng28:MyDevelopmentUtilAssemble:v1.2.1'
 }

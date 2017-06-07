@@ -30,6 +30,7 @@ import com.example.mydemos_len.activitys.SearchViewActivity;
 import com.example.mydemos_len.activitys.TabLayoutActivity;
 import com.example.mydemos_len.activitys.TableHostActivity;
 import com.example.mydemos_len.activitys.TagViewActivity;
+import com.example.mydemos_len.activitys.XRecyclerViewActivity;
 import com.example.mydemos_len.bean.TestTitleBean;
 import com.example.mydemos_len.utils.DividerItemDecoration;
 import com.example.mydemos_len.adapter.MyAdapter;
@@ -109,6 +110,9 @@ public class BbFragment extends Fragment implements View.OnClickListener{
 					case "TabLayout":
 						startActivity(new Intent(BbFragment.this.getActivity(), TabLayoutActivity.class));
 						break;
+					case "XRecyclerView":
+						startActivity(new Intent(BbFragment.this.getActivity(), XRecyclerViewActivity.class));
+						break;
 				}
 			}
 
@@ -139,6 +143,7 @@ public class BbFragment extends Fragment implements View.OnClickListener{
 		originData.add(new TestTitleBean("Location","定位"));
 		originData.add(new TestTitleBean("FloatingActionButton","FAB"));
 		originData.add(new TestTitleBean("TabLayout",""));
+		originData.add(new TestTitleBean("XRecyclerView",""));
 
 		attempData.addAll(originData);
 	}
