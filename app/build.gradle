@@ -20,7 +20,7 @@ android {
         versionName '1.0'
         versionCode 1
 
-        //自定义config熟悉
+        //自定义config属性
         buildConfigField "boolean", "AUTO_UPDATES", "true"
         buildConfigField "int", "fortest", "0"
     }
@@ -50,8 +50,7 @@ android {
             // 自定义config属性: "LOG_DEBUG" 不显示Log
             buildConfigField "boolean", "LOG_DEBUG", "false"
 
-            minifyEnabled true
-            debuggable false
+            debuggable false    //默认false，可不写
 
             // 是否进行混淆
             minifyEnabled false
@@ -65,8 +64,7 @@ android {
             // 显示Log
             buildConfigField "boolean", "LOG_DEBUG", "true"
 
-            minifyEnabled false
-            debuggable true
+            debuggable true     //默认true，可不写
 
             // 是否进行混淆
             minifyEnabled false
