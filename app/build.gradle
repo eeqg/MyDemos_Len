@@ -16,7 +16,7 @@ android {
     defaultConfig {
         applicationId "com.example.mydemos_len"
         minSdkVersion 21
-        targetSdkVersion 21
+        targetSdkVersion 25
         versionName '1.0'
         versionCode 1
 
@@ -123,6 +123,13 @@ android {
             }
         }
     }
+//    applicationVariants.all { variant ->
+//        variant.outputs.each { output ->
+//            output.outputFile = new File(
+//                    output.outputFile.parent,
+//                    output.outputFile.name.replace(".apk", "-customer-${variant.versionName}.apk"))
+//        }
+//    }
 
 //    sourceSets {
 //        main {

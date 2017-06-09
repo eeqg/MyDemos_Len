@@ -118,7 +118,7 @@ public class XRecyclerViewActivity extends AppCompatActivity {
 		
 		adapter = new MyXRecyclerViewAdapter(listData);
 		this.dataBinding.recyclerView.setAdapter(adapter);
-		this.dataBinding.recyclerView.refresh();//刷新
+		this.dataBinding.recyclerView.refresh();//首次自动刷新
 	}
 	
 	private void refreshData(){

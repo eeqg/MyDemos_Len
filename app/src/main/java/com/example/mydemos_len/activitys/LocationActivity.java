@@ -1,7 +1,7 @@
 package com.example.mydemos_len.activitys;
 
 import android.os.Bundle;
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -13,7 +13,7 @@ import com.example.mydemos_len.APP;
 import com.example.mydemos_len.R;
 import com.example.mydemos_len.service.LocationService;
 
-public class LocationActivity extends Activity {
+public class LocationActivity extends AppCompatActivity {
 	
 	private TextView showLocation;
 	private LocationService locationService;

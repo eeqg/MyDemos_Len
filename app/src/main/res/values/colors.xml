@@ -8,6 +8,13 @@
     <color name="colorSwipeRefreshProgressInner3">#3238ff</color>
     <color name="colorSwipeRefreshProgressOuter">#1032aa38</color>
 
+
+    <color name="colorPrimary">#D71F2D</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="colorThemePrimary">#D71F2D</color>
+    <color name="colorThemeAccent">#D71F2D</color>
+
     <!-- 重点 -->
     <color name="colorTextAccent">#EC1D2E</color>
     <!-- 主级 -->
