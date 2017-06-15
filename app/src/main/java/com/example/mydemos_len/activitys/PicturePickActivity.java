@@ -57,6 +57,18 @@ public class PicturePickActivity extends Activity {
 	public void fromGallery(View view) {
 		Intent intent = new Intent(Intent.ACTION_PICK);
 		intent.setType("image/*");
+		
+		intent.putExtra("crop", "true");
+		intent.putExtra("aspectX", 2);
+		intent.putExtra("aspectY", 1);
+		intent.putExtra("outputX", 600);
+		intent.putExtra("outputY", 300);
+		intent.putExtra("scale", true);
+		intent.putExtra("return-data", true);
+		//intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+		intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
+		intent.putExtra("noFaceDetection", true); // no face detection
+		
 		startActivityForResult(intent, REQUEST_CODE_GALLERY);
 	}
 	
@@ -143,7 +155,7 @@ public class PicturePickActivity extends Activity {
 				// 开启多选   （默认为多选）  (单选 为 singleSelect)
 				.singleSelect()
 				//剪切
-				//.crop()
+				.crop()
 				// 多选时的最大数量   （默认 9 张）
 				.mutiSelectMaxSize(9)
 				// 已选择的图片路径
