@@ -165,18 +165,9 @@ repositories {
  *   compile fileTree(dir: 'libs', include: '*.jar')
  */
 dependencies {
-    //add gson
-    //rxjava rxandroid
-    //add glide
-    //convenientbanner
-    //viewpager transforms
-    //+jar
     compile files('libs/BaiduLBS_Android.jar')
-    //+module
     compile project(':okhttputils')
-    //添加imageselector-release.aar包
     compile(name: "imageselector-release", ext: "aar")
-    //FAB
     compile 'com.android.support:support-v4:20.0.0'
     compile 'com.android.support:recyclerview-v7:22.2.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
@@ -191,7 +182,5 @@ dependencies {
     compile 'com.bigkoo:convenientbanner:2.0.5'
     compile 'com.ToxicBakery.viewpager.transforms:view-pager-transforms:1.2.32@aar'
     compile 'com.github.fafaldo:fab-toolbar:1.2.0'
-
-    //self
-    compile 'com.github.wangpeng28:MyDevelopmentUtilAssemble:v1.2.1'
+    compile 'com.github.wangpeng28:MyDevelopmentUtilAssemble:1.3.0'
 }

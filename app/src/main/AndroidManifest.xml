@@ -136,6 +136,10 @@
         <activity
             android:name=".activitys.XRecyclerViewActivity"
             android:theme="@style/SupportTheme"/>
+        <activity
+            android:name=".activitys.ClipDrawableActivity"
+            android:theme="@style/Theme.AppCompat.Light">
+        </activity>
     </application>
 
 </manifest>

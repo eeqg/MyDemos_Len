@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import com.example.mydemos_len.R;
 import com.example.mydemos_len.activitys.BannerViewActivity;
+import com.example.mydemos_len.activitys.ClipDrawableActivity;
 import com.example.mydemos_len.activitys.DrawerLayoutActivity;
 import com.example.mydemos_len.activitys.FloatingActionActivity;
 import com.example.mydemos_len.activitys.LocationActivity;
@@ -113,6 +114,9 @@ public class BbFragment extends Fragment implements View.OnClickListener{
 					case "XRecyclerView":
 						startActivity(new Intent(BbFragment.this.getActivity(), XRecyclerViewActivity.class));
 						break;
+					case "ClipDrawable":
+						startActivity(new Intent(BbFragment.this.getActivity(), ClipDrawableActivity.class));
+						break;
 				}
 			}
 
@@ -144,6 +148,7 @@ public class BbFragment extends Fragment implements View.OnClickListener{
 		originData.add(new TestTitleBean("FloatingActionButton","FAB"));
 		originData.add(new TestTitleBean("TabLayout",""));
 		originData.add(new TestTitleBean("XRecyclerView",""));
+		originData.add(new TestTitleBean("ClipDrawable",""));
 
 		attempData.addAll(originData);
 	}
