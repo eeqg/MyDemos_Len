@@ -190,6 +190,7 @@ public class WebViewActivity extends Activity {
         });
 		webView.setDownloadListener(new WebviewDownloadListener());
 		mUrl = "http://clk1.haowin.cn/url/hNHLTBTm/K9WLyy";
+		// mUrl = "haorencun://";
 		webView.loadUrl(mUrl);
 		
 		//init data

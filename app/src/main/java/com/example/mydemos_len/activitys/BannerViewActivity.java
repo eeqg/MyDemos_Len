@@ -2,6 +2,7 @@ package com.example.mydemos_len.activitys;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -110,7 +111,45 @@ public class BannerViewActivity extends Activity {
 		Log.d("test_wp","itemMod=="+itemMod);
 		viewpager.setCurrentItem(Integer.MAX_VALUE / 2 - itemMod);//初始化显示第一页
 		
+		viewpager.setOffscreenPageLimit(5);
+		viewpager.setPageTransformer(false, new ViewPager.PageTransformer() {
+			@Override
+			public void transformPage(View view, float position) {
+				float maxXScale = 0.5F;
+				float minXScale = 0.3F;
+				float maxYScale = 0.76F;
+				float minYScale = 0.6F;
+				
+				android.util.Log.d("test_wp", "BannerViewActivity--transformPager()--position="+position);
+				if (position == 0) {
+					ViewCompat.setScaleX(view, maxXScale);
+					ViewCompat.setScaleY(view, maxYScale);
+					ViewCompat.setTranslationX(view, 0);
+				} else if (position < 0) {//滑出的页
+					ViewCompat.setScaleX(view, maxXScale + (maxXScale - minXScale) * position);
+					ViewCompat.setScaleY(view, maxYScale + (maxYScale - minYScale) * position);
+					ViewCompat.setTranslationX(view, view.getWidth() * -position * 0.55F);
+				} else if (position > 0) {//滑进的页
+					ViewCompat.setScaleX(view, maxXScale - (maxXScale - minXScale) * position);
+					ViewCompat.setScaleY(view, maxYScale - (maxYScale - minYScale) * position);
+					ViewCompat.setTranslationX(view, view.getWidth() * -position * 0.55F);
+				}
+				
+				// float alpha = 0.0f;
+				// if (0.0f <= position && position <= 1.0f) {
+				// 	alpha = 1.0f - position + 0.35f;
+				// } else if (-1.0f <= position && position < 0.0f) {
+				// 	alpha = position + 1.0f + 0.35f;
+				// }
+				// view.setAlpha(alpha);
+			}
+		});
+		
 		//- - - - - - - - - - - - - - -- - - -
+		
+		
+		
+		//- - - -- - - - - - - - - - - - - - -- - - - - -
 		
 		convenientBanner = (ConvenientBanner) findViewById(R.id.convenientBanner1);
 		convenientBanner.setPages(new CBViewHolderCreator<LocalImageHolderView>() {

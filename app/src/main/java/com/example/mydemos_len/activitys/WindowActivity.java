@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.WindowManager.LayoutParams;
+import android.widget.TextView;
 
 import com.example.mydemos_len.R;
 
@@ -33,6 +35,11 @@ public class WindowActivity extends Activity {
 				showShareView();
 			}
 		});
+		
+		TextView view = (TextView) findViewById(R.id.tvUrl);
+		view.setMovementMethod(LinkMovementMethod.getInstance());
+		TextView view2 = (TextView) findViewById(R.id.tvUrl2);
+		view2.setMovementMethod(LinkMovementMethod.getInstance());
 	}
 
 	protected void showShareView() {

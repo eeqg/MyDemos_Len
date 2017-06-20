@@ -27,4 +27,6 @@
     <string name="title_activity_xrecycler_view">XRecyclerViewActivity</string>
     <string name="title_activity_clip_drawable">ClipDrawableActivity</string>
 
+    <string name="url_test"><a href='haorencun://'>haorencun://</a></string>
+    <string name="url_test2"><a href='haorencun://wx.zhuzhuone.com/shop/shop!detail.action?id=40c11dc04edb429ea6c5e8c853112d3e'>haorencun://with_id</a></string>
 </resources>
