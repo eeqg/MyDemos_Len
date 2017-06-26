@@ -11,9 +11,17 @@
 buildscript {
     repositories { //声明仓库源
         jcenter() //默认
+
+        //添加fir maven源  (fir)
+        maven {
+            url "http://maven.bughd.com/public"
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.0' //声明Android gradle plugin的版本
+
+        //添加fir插件依赖  (fir)
+        classpath 'im.fir:gradle-fir-publisher:1.0.7'
     }
 }
 
