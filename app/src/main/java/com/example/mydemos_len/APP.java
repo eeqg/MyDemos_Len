@@ -11,6 +11,8 @@ import android.view.WindowManager;
 import com.baidu.mapapi.SDKInitializer;
 import com.example.mydemos_len.service.LocationService;
 
+import crash.CrashHandler2;
+
 /**
  * Created by Administrator on 2017/4/27 0027.
  */
@@ -24,9 +26,13 @@ public class APP extends Application {
 	
 	public LocationService locationService;
 	public Vibrator mVibrator;
+	private static APP INSTANCE;
+	
 	@Override
 	public void onCreate() {
 		super.onCreate();
+		INSTANCE = this;
+		
 		/***
 		 * 初始化定位sdk，建议在Application中创建
 		 */
@@ -36,6 +42,16 @@ public class APP extends Application {
 		
 		
 		initScreenSize();
+		
+		//bug
+		//CrashHandler2.getInstance().init(getApplicationContext());
+	}
+	
+	public static APP getInstance(){
+		if (INSTANCE == null) {
+			INSTANCE = new APP();
+		}
+		return INSTANCE;
 	}
 	
 	/**
