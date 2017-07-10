@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.mydemos_len.activitys.ScrollActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#10808080"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="160dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Offset this view's horizontal/vertical location by the specified amount of pixels"
+                android:textSize="10sp"/>
+
+            <View
+                android:id="@+id/viewIndicator"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_gravity="center"
+                android:background="#80ff2222"/>
+        </FrameLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+
+            <ImageView
+                android:id="@+id/offsetUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/btn_primary_box2"
+                android:padding="4dp"
+                android:src="@drawable/ic_arrow_up"/>
+
+            <ImageView
+                android:id="@+id/offsetDown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/offsetUp"
+                android:layout_below="@+id/offsetLeft"
+                android:background="@drawable/btn_primary_box2"
+                android:padding="4dp"
+                android:src="@drawable/ic_arrow_down"/>
+
+            <ImageView
+                android:id="@+id/offsetLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/offsetUp"
+                android:layout_marginEnd="8dp"
+                android:layout_toStartOf="@+id/offsetDown"
+                android:background="@drawable/btn_primary_box2"
+                android:padding="4dp"
+                android:src="@drawable/ic_arrow_left"/>
+
+            <ImageView
+                android:id="@+id/offsetRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/offsetUp"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/offsetDown"
+                android:background="@drawable/btn_primary_box2"
+                android:padding="4dp"
+                android:src="@drawable/ic_arrow_right"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -23,6 +23,7 @@ import com.example.mydemos_len.activitys.AboutTextActivity;
 import com.example.mydemos_len.activitys.ActivitiesActivity;
 import com.example.mydemos_len.activitys.AnimationActivity;
 import com.example.mydemos_len.activitys.PasswordRetrievalActivity;
+import com.example.mydemos_len.activitys.ScrollActivity;
 import com.example.mydemos_len.activitys.SmsActivity;
 import com.example.mydemos_len.activitys.WebViewActivity;
 import com.example.mydemos_len.activitys.WidgetActivity;
@@ -96,7 +97,7 @@ public class AaFragment extends ListFragment{
 		items.add("WebView");
 		items.add("AboutText");
 		items.add("About window");
-		items.add("");
+		items.add("About scroll");
 		items.add("");
 		items.add("");
 		items.add("");
@@ -163,7 +164,7 @@ public class AaFragment extends ListFragment{
 			startActivity(new Intent(getActivity(), WindowActivity.class));
 			break;
 		case 7:
-			//startActivity(new Intent(getActivity(), NotificationsActivity.class));
+			startActivity(new Intent(getActivity(), ScrollActivity.class));
 			break;
 		case 8:
 			//startActivity(new Intent(getActivity(), NetworkActivity.class));

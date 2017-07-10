@@ -140,6 +140,10 @@
             android:name=".activitys.ClipDrawableActivity"
             android:theme="@style/Theme.AppCompat.Light">
         </activity>
+        <activity
+            android:name=".activitys.ScrollActivity"
+            android:label="@string/title_activity_scroll">
+        </activity>
     </application>
 
 </manifest>
