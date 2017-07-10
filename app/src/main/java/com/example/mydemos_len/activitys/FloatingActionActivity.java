@@ -54,12 +54,30 @@ public class FloatingActionActivity extends Activity {
 			@Override
 			public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
 				super.onScrollStateChanged(recyclerView, newState);
+				//@{ 方法1: }
+				RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
+				if (layoutManager instanceof LinearLayoutManager) {
+					LinearLayoutManager linearLayoutManager = (LinearLayoutManager) layoutManager;
+					int firstVisibleItemPosition = linearLayoutManager.findFirstVisibleItemPosition();
+					stickyView.setVisibility(firstVisibleItemPosition >= 1 ? View.VISIBLE : View.GONE);
+				}
+				//@{ 方法1: }
 			}
 			
 			@Override
 			public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
 				super.onScrolled(recyclerView, dx, dy);
+				//@{ 方法1: }
+				RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
+				if (layoutManager instanceof LinearLayoutManager) {
+					LinearLayoutManager linearLayoutManager = (LinearLayoutManager) layoutManager;
+					int firstVisibleItemPosition = linearLayoutManager.findFirstVisibleItemPosition();
+					stickyView.setVisibility(firstVisibleItemPosition >= 1 ? View.VISIBLE : View.GONE);
+				}
+				//@{ 方法1: }
 				
+				//@{ 方法2: }
+				/*
 				RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
 				if (layoutManager instanceof LinearLayoutManager) {
 					LinearLayoutManager linearLayoutManager = (LinearLayoutManager) layoutManager;
@@ -78,6 +96,8 @@ public class FloatingActionActivity extends Activity {
 					int position = linearLayoutManager.findFirstVisibleItemPosition();
 					if(position > 0)stickyContent.setText(originData.get(position - 1).title);
 				}
+				*/
+				//@{ 方法2: }
 			}
 		});
 	}
