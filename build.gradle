@@ -20,8 +20,8 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.0' //声明Android gradle plugin的版本
 
-        //添加fir插件依赖  (fir)
-        classpath 'im.fir:gradle-fir-publisher:1.0.7'
+//        //添加fir插件依赖  (fir)
+//        classpath 'im.fir:gradle-fir-publisher:1.0.7'
     }
 }
 
