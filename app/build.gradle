@@ -187,7 +187,7 @@ dependencies {
     compile 'com.bigkoo:convenientbanner:2.0.5'
     compile 'com.ToxicBakery.viewpager.transforms:view-pager-transforms:1.2.32@aar'
     compile 'com.github.fafaldo:fab-toolbar:1.2.0'
-    compile 'com.github.wangpeng28:MyDevelopmentUtilAssemble:1.3.0'
+    compile 'com.github.eeqg:MyDevelopmentUtilAssemble:1.3.0'
 }
 
 
