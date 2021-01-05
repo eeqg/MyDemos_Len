@@ -11,14 +11,16 @@ apply plugin: 'com.android.application'
  * android 项目配置
  */
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "com.example.mydemos_len"
         minSdkVersion 21
-        targetSdkVersion 25
+        targetSdkVersion 28
         versionName '1.0'
         versionCode 1
+
+        flavorDimensions "default"
 
         //自定义config属性
         buildConfigField "boolean", "AUTO_UPDATES", "true"
@@ -111,24 +113,24 @@ android {
     }
 
     //修改生成的apk名字
-    applicationVariants.all { variant ->
-
-        if (variant.buildType.name.equals('release')) {
-            variant.outputs.each { output ->
-                def appName = 'MyDemos'
-                def oldFile = output.outputFile
-                def buildName = 'GooglePlay'
-                def releaseApkName
-
-                variant.productFlavors.each { product ->
-                    buildName = product.name
-                }
-
-                releaseApkName = appName + /*getVersionNameFromManifest()*/versionName + '-' + buildName + '-' + getDate() + '.apk'
-                output.outputFile = new File(oldFile.parent, releaseApkName)
-            }
-        }
-    }
+//    applicationVariants.all { variant ->
+//
+//        if (variant.buildType.name.equals('release')) {
+//            variant.outputs.each { output ->
+//                def appName = 'MyDemos'
+//                def oldFile = output.outputFile
+//                def buildName = 'GooglePlay'
+//                def releaseApkName
+//
+//                variant.productFlavors.each { product ->
+//                    buildName = product.name
+//                }
+//
+//                releaseApkName = appName + /*getVersionNameFromManifest()*/versionName + '-' + buildName + '-' + getDate() + '.apk'
+//                output.outputFile = new File(oldFile.parent, releaseApkName)
+//            }
+//        }
+//    }
 //    applicationVariants.all { variant ->
 //        variant.outputs.each { output ->
 //            output.outputFile = new File(
@@ -145,11 +147,11 @@ android {
 }
 
 //获取时间戳
-def getDate() {
-    def date = new Date()
-    def formattedDate = date.format('yyyyMMddHHmm')
-    return formattedDate
-}
+//def getDate() {
+//    def date = new Date()
+//    def formattedDate = date.format('yyyyMMddHHmm')
+//    return formattedDate
+//}
 
 //从androidManifest.xml中获取版本号
 //def getVersionNameFromManifest() {
@@ -172,22 +174,22 @@ repositories {
  */
 dependencies {
     compile files('libs/BaiduLBS_Android.jar')
-    compile project(':okhttputils')
+    implementation project(':okhttputils')
     compile(name: "imageselector-release", ext: "aar")
-    compile 'com.android.support:support-v4:20.0.0'
-    compile 'com.android.support:recyclerview-v7:22.2.0'
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:design:25.3.1'
-    compile 'com.google.code.gson:gson:2.8.0'
-    compile 'io.reactivex:rxjava:1.2.7'
-    compile 'io.reactivex:rxandroid:1.2.1'
-    compile 'com.trello:rxlifecycle:0.3.0'
-    compile 'com.trello:rxlifecycle-components:0.3.0'
-    compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'com.bigkoo:convenientbanner:2.0.5'
-    compile 'com.ToxicBakery.viewpager.transforms:view-pager-transforms:1.2.32@aar'
-    compile 'com.github.fafaldo:fab-toolbar:1.2.0'
-    compile 'com.github.eeqg:MyDevelopmentUtilAssemble:1.3.0'
+    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.google.code.gson:gson:2.8.0'
+    implementation 'io.reactivex:rxjava:1.2.7'
+    implementation 'io.reactivex:rxandroid:1.2.1'
+    implementation 'com.trello:rxlifecycle:0.3.0'
+    implementation 'com.trello:rxlifecycle-components:0.3.0'
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    implementation 'com.bigkoo:convenientbanner:2.0.5'
+    implementation 'com.ToxicBakery.viewpager.transforms:view-pager-transforms:1.2.32@aar'
+    implementation 'com.github.fafaldo:fab-toolbar:1.2.0'
+    implementation 'com.github.eeqg:MyDevelopmentUtilAssemble:1.3.0'
 }
 
 
